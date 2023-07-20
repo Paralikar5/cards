@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Heading from "./Components/Heading";
+import Footer from "./Components/Footer";
+import Notes from "./Components/Notes";
+import NoteFile from "./Components/NoteFile";
+import CreateArea from "./Components/CreateArea";
 
 function App() {
+
+  function addNote(note){
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Heading />
+      <CreateArea 
+        onAdd = {addNote}
+      />
+      {NoteFile.map( newnote => {
+        return (
+          <Notes
+            key={newnote.key}
+            title={newnote.title}
+            content={newnote.content}
+          />
+        );
+      })}
+      <Footer />
     </div>
   );
 }
